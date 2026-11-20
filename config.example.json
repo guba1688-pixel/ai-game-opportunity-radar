@@ -1,0 +1,18 @@
+{
+  "sources": {
+    "ai_market": {
+      "enabled": true,
+      "config": {}
+    },
+    "game_market": {
+      "enabled": true,
+      "config": {}
+    }
+  },
+  "deepseek": {
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-flash",
+    "api_key_env": "DEEPSEEK_API_KEY"
+  },
+  "notes": "资讯源配置不要填写账号、Cookie 或密钥。DeepSeek 密钥可在自动监测/API页面保存，或使用服务器环境变量 DEEPSEEK_API_KEY。"
+}

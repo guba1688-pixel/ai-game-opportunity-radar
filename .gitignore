@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+data/*
+!data/.gitkeep
+exports/*.csv
+exports/*.md
+config.json
+config/deepseek.json
+.coverage
+__pycache__/
+

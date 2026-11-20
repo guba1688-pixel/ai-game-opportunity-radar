@@ -1,0 +1,146 @@
+.governance-status,
+.governance-grid,
+.governance-dimensions {
+  display: grid;
+  gap: 12px;
+}
+
+.governance-status {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 18px;
+}
+
+.governance-status > div,
+.rule-card,
+.governance-block {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.governance-status small,
+.governance-status strong {
+  display: block;
+}
+
+.governance-status small,
+.rule-card p,
+.governance-block p {
+  color: var(--muted);
+}
+
+.governance-status strong {
+  margin-top: 3px;
+  font-size: 18px;
+}
+
+.governance-notice {
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  color: #815900;
+  border: 1px solid #f1d58d;
+  border-radius: 10px;
+  background: #fff7df;
+}
+
+.governance-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.rule-card h3,
+.governance-block h3 {
+  margin: 0 0 5px;
+}
+
+.rule-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 8px 0;
+}
+
+.rule-meta span {
+  padding: 3px 8px;
+  color: #315baa;
+  border-radius: 20px;
+  background: #e8efff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.rule-card ul,
+.governance-block ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.governance-block {
+  margin-top: 16px;
+}
+
+.governance-dimensions {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 10px;
+}
+
+.dimension-card {
+  padding: 11px;
+  border-radius: 9px;
+  background: #f5f7fb;
+}
+
+.dimension-card strong {
+  display: block;
+  color: var(--blue);
+}
+
+.dimension-card span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.dedupe-step {
+  display: grid;
+  grid-template-columns: 116px 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.dedupe-step:last-child {
+  border-bottom: 0;
+}
+
+.dedupe-step b {
+  color: var(--blue);
+}
+
+.dedupe-step em {
+  color: var(--muted);
+  font-size: 11px;
+  font-style: normal;
+}
+
+@media (max-width: 1100px) {
+  .governance-status,
+  .governance-dimensions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .governance-status,
+  .governance-grid,
+  .governance-dimensions {
+    grid-template-columns: 1fr;
+  }
+
+  .dedupe-step {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+

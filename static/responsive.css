@@ -1,0 +1,251 @@
+/*
+ * Desktop display adaptation contract
+ * Physical screen size is mapped to CSS logical viewport width because macOS
+ * Retina scaling makes hardware pixels unsuitable for responsive layout.
+ */
+:root {
+  --sidebar-width: clamp(212px, 15.5vw, 248px);
+  --page-gutter: clamp(24px, 2.5vw, 56px);
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  min-width: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+}
+
+main {
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  margin-left: var(--sidebar-width);
+  padding: clamp(28px, 2.2vw, 42px) var(--page-gutter) 48px;
+}
+
+header,
+.detail-hero,
+.section-head {
+  min-width: 0;
+}
+
+h1 {
+  font-size: clamp(26px, 1.8vw, 34px);
+}
+
+.header-actions {
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.toolbar.filters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: end;
+}
+
+.filters > input,
+.filters > select,
+.filters > button {
+  width: 100%;
+  min-width: 0;
+}
+
+.filters input:first-child {
+  width: 100%;
+  grid-column: span 2;
+}
+
+.filters .spacer {
+  display: none;
+}
+
+.cards,
+.decision-kpis,
+.detail-grid,
+.score-bars,
+.form-grid {
+  min-width: 0;
+}
+
+.card,
+.decision-kpi,
+.detail-block {
+  min-width: 0;
+}
+
+.card h3,
+.card .action,
+.detail-block,
+.signal p,
+td,
+th {
+  overflow-wrap: anywhere;
+}
+
+dialog {
+  max-width: calc(100vw - 32px);
+}
+
+#detail-dialog {
+  width: min(1180px, calc(100vw - 40px));
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.gate-timeline,
+.table-wrap {
+  max-width: 100%;
+  overscroll-behavior-inline: contain;
+}
+
+/* 21-inch and compact desktop: typically 1280-1359 CSS px. */
+@media (min-width: 761px) and (max-width: 1359px) {
+  :root {
+    --sidebar-width: 212px;
+    --page-gutter: 22px;
+  }
+
+  main {
+    padding-top: 26px;
+  }
+
+  header {
+    gap: 16px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .decision-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .asset-strip {
+    gap: 12px;
+  }
+}
+
+/* 24-inch and common Mac scaled desktop: 1360-1599 CSS px. */
+@media (min-width: 1360px) and (max-width: 1599px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 27-inch / 5K Mac scaled modes: 1600-1839 CSS px. */
+@media (min-width: 1600px) {
+  .toolbar.filters {
+    grid-template-columns: minmax(220px, 1.8fr) repeat(6, minmax(96px, 1fr)) repeat(3, auto);
+  }
+
+  .filters input:first-child {
+    grid-column: auto;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 27/32-inch full-width modes: use the available canvas without oversized cards. */
+@media (min-width: 1840px) {
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .decision-kpi {
+    padding: 16px 20px;
+  }
+}
+
+/* 32-inch / 2560 logical px: preserve readable line lengths and generous rhythm. */
+@media (min-width: 2200px) {
+  :root {
+    --page-gutter: 56px;
+  }
+
+  .toolbar.filters {
+    grid-template-columns: minmax(280px, 2fr) repeat(6, minmax(125px, 1fr)) repeat(3, minmax(92px, auto));
+    gap: 10px;
+    padding: 13px;
+  }
+
+  .cards {
+    gap: 18px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .toolbar.filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --sidebar-width: 100%;
+    --page-gutter: 20px;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  main {
+    width: 100%;
+    margin-left: 0;
+    padding: 20px var(--page-gutter) 36px;
+  }
+
+  .toolbar.filters {
+    grid-template-columns: 1fr;
+  }
+
+  .filters input:first-child {
+    grid-column: auto;
+  }
+
+  .decision-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .asset-strip,
+  .type-tabs,
+  .detail-actions {
+    flex-wrap: wrap;
+  }
+
+  #detail-dialog {
+    width: calc(100vw - 20px);
+    max-width: calc(100vw - 20px);
+    padding: 20px;
+  }
+}
+
+@media (max-width: 430px) {
+  .decision-kpis,
+  .score-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .type-tab {
+    flex: 1 1 auto;
+    border-radius: 8px !important;
+  }
+}
+

@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "connectors": [
+    {
+      "key": "apple_store_rss",
+      "name": "Apple App Store RSS/Marketing Tools",
+      "authority": "官方公开接口",
+      "status": "planned",
+      "auth": "无需密钥",
+      "scope": "国家/地区榜单、应用元数据",
+      "requirements": ["确认接口条款和请求频率", "保存原始URL与响应时间", "按国家和榜单类型配置"]
+    },
+    {
+      "key": "licensed_market_export",
+      "name": "授权市场数据导出",
+      "authority": "需公司已有商业授权",
+      "status": "blocked_by_authorization",
+      "auth": "导出文件或正式API凭据",
+      "scope": "下载、收入估算、投放或产品趋势",
+      "requirements": ["确认账号授权范围", "禁止共享或绕过付费墙", "估算值必须标记第三方估算"]
+    },
+    {
+      "key": "meta_ad_library",
+      "name": "Meta Ad Library API",
+      "authority": "官方授权接口",
+      "status": "blocked_by_credentials",
+      "auth": "公司授权访问令牌",
+      "scope": "广告创意与投放主体公开信息",
+      "requirements": ["由管理员配置令牌", "不在日志或前端暴露密钥", "遵守平台速率和用途限制"]
+    }
+  ]
+}
